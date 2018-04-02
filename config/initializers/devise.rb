@@ -44,7 +44,7 @@ Devise.setup do |config|
   require "omniauth-google-oauth2"
 
   google_config = Rails.application.config_for(:google)
-  config.omniauth :google_oauth2, google_config["app_id"], google_config["secret"], {accsee_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, google_config["app_id"], google_config["secret"], scope: "public_profile,email", info_fields: "email,name", callback_url: "https://www.khroma-go.com/users/auth/google/callback"
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
