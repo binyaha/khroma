@@ -43,17 +43,17 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'www.khroma-go.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: ENV["GMAIL_DOMAIN"],
+  domain: gmail.com,
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"]
+  user_name: khromago@gmail.com,
+  password: khroma1234
   }
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
