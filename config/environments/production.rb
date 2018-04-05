@@ -49,11 +49,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: gmail.com,
+  domain: 'gmail.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: khromago@gmail.com,
-  password: khroma1234
+  user_name: 'khromago@gmail.com',
+  password: 'khroma1234'
   }
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
