@@ -52,8 +52,8 @@ Rails.application.configure do
   domain: 'gmail.com',
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'khromago@gmail.com',
-  password: 'khroma1234'
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
   }
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
