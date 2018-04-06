@@ -18,7 +18,6 @@
 
 
           <div class="field">
-            <%= f.label :password, "New password" %><br />
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em><br />
             <% end %>
@@ -26,7 +25,6 @@
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation, "Confirm new password" %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "確認新密碼",class: "form-control" %>
           </div>
           <br>
