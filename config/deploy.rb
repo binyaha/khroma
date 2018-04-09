@@ -22,7 +22,7 @@ set :deploy_to, '/home/deploy/khroma'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/secrets.yml", "config/google.yml", "config/facebook.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml", "config/google.yml", "config/facebook.yml", "config/cloudinary.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/uploads"
