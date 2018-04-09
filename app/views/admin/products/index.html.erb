@@ -18,7 +18,17 @@
       </tr>
     </thead>
     <tbody>
-
+      <% @products.each do |product| %>
+        <tr>
+          <% product.attributes.each do |key,value|  %>
+     
+          <% end %>
+          <td><%= product.color.hex %> <div class="chip-color" style="background-color: <%= product.color.hex %>;"></div> </td>
+          <td><%= product.color.hue_level.name %></td>
+          <td><%= link_to "編輯", edit_admin_style_product_path(@style, product) %></td>
+          <td><%= link_to "刪除", admin_style_product_path(@style, product), method: :delete %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 
