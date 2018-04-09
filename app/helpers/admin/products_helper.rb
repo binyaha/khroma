@@ -3,7 +3,7 @@ module Admin::ProductsHelper
   def show_product_attribute(value)
     return value unless value.is_a? String
     if value.include?('http')
-      return is_image?(value) ? image_tag(value, :class => "table-product-img") : link_to(value, value, target: :_blank)
+      
     end
     value
   end
