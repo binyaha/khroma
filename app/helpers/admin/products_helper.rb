@@ -3,7 +3,7 @@ module Admin::ProductsHelper
   def show_product_attribute(value)
     return value unless value.is_a? String
     if value.include?('http')
-      
+      return is_image?(value) ? image_tag(value, :class => "table-product-img") : link_to(value, value, target: :_blank)
     end
     value
   end
@@ -11,7 +11,7 @@ module Admin::ProductsHelper
   private
   def is_image?(url)
     url = URI.parse(url)
-    http = Net::HTTP.new(url.host, url.port)
+    http = Net::HTTP.new(url.host, url.port, use_ssl: true)
     http.use_ssl = (url.scheme == "https")
 
     http.start do |http|
