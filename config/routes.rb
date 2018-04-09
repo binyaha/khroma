@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
@@ -79,7 +80,11 @@ Rails.application.routes.draw do
     resources :styles, except: [:show, :new] do
       resources :products, except: [:show, :new]
     end
-    resources :products, only: [:edit, :update, :destroy]
+    resources :products, only: [:edit, :update, :destroy] do
+      collection do
+        get :get_chip_colors
+      end
+    end
   end
   
 end
