@@ -24,8 +24,5 @@
 /public/uploads
 
 /config/google.yml
-<<<<<<< HEAD
 /config/facebook.yml
-=======
 /config/cloudinary.yml
->>>>>>> upstream/master
