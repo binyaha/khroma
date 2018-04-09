@@ -11,9 +11,9 @@ module Admin::ProductsHelper
   private
   def is_image?(url)
     url = URI.parse(url)
-    http = Net::HTTP.start(url.host, url.port)
+    http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = (url.scheme == "https")
-
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     http.start do |http|
       return http.head(url.request_uri)['Content-Type'].start_with? 'image'
     end
