@@ -10,9 +10,11 @@ module Admin::ProductsHelper
 
   private
   def is_image?(url)
+    require 'net/http'
     url = URI.parse(url)
     http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
+    http.use_ssl = (url.scheme == "https")
+
     http.start do |http|
       return http.head(url.request_uri)['Content-Type'].start_with? 'image'
     end
