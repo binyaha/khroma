@@ -21,7 +21,7 @@
       <% @products.each do |product| %>
         <tr>
           <% product.attributes.each do |key,value|  %>
-            <td class = "td-width"><%= show_product_attribute(value) %></td>
+            <td><%= show_product_attribute(value) %></td>
           <% end %>
           <td><%= product.color.hex %> <div class="chip-color" style="background-color: <%= product.color.hex %>;"></div> </td>
           <td><%= product.color.hue_level.name %></td>
