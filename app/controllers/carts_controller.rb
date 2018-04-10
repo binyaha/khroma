@@ -15,18 +15,10 @@ class CartsController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:user_id])
-    if @user == current_user
-      @types= []
-      @products = current_user.cart_products.includes(style: :type)
-      @products.each do |product|
-        @types << product.style.type.name
-        @types = @types.uniq
-      end
-    else
-      #只有本人能看到自己的配色車
-      redirect_to root_path
-    end
+    @user = current_user
+    @types= []
+    @products = current_user.cart_products.includes(style: :type)
+    @types = @products.map{ |p| p.style.type.name }.uniq
   end
 
 end
