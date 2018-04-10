@@ -15,14 +15,9 @@ class KhromaController < ApplicationController
   def match
     # 'Match' is a service object, app/service/match.rb
     @matches = Match.new(params[:up_type_id], params[:up_hue_level], params[:down_type_id], params[:down_hue_level], params[:principle_color_id])
-      puts "error = #{@matches.error}"
-      puts @matches.error.any?
-      puts @matches.error[:message].nil?
     if @matches.error.any?
-      puts "yo error!"
       params_not_enough if @matches.error[:code] == 1
     end
-    
 
     render json: {
       productsMatchHtml: render_to_string(partial: 'shared/match_result', locals: {principle_colors: @matches.principle_colors,
@@ -33,9 +28,11 @@ class KhromaController < ApplicationController
   end
 
   def pop_gender_choices
+    @hue_levels = HueLevel.all
+
   	render json:{
-  	  typesUpHtml: render_to_string(partial: 'shared/pop_gender_choices', locals: {categories: @categories[0]}),
-  	  typesDownHtml: render_to_string(partial: 'shared/pop_gender_choices', locals: {categories: @categories[1]})
+  	  typesUpHtml: render_to_string(partial: 'shared/pop_gender_choices', locals: {categories: @categories[0], hue_levels: @hue_levels}),
+  	  typesDownHtml: render_to_string(partial: 'shared/pop_gender_choices', locals: {categories: @categories[1], hue_levels: @hue_levels})
   	}  
   end
 
@@ -45,9 +42,10 @@ class KhromaController < ApplicationController
     else 
       q2 = 0
     end
+    @hue_levels = HueLevel.all
 
   	render json: {
-      q1Html: render_to_string(partial: 'shared/pop_q1_choices', locals: {categories: @categories[params[:up_or_down].to_i]}),
+      q1Html: render_to_string(partial: 'shared/pop_q1_choices', locals: {categories: @categories[params[:up_or_down].to_i], hue_levels: @hue_levels}),
   		q2Html: render_to_string(partial: 'shared/pop_q2_choices', locals: {categories: @categories[q2]})
   	}	
   end
